@@ -1,148 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بروتوكول عيادة الطب النفسي الرقمية (DMC) - سمافريكا</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; }
-        .chart-container { position: relative; width: 100%; max-width: 600px; margin: auto; height: 350px; }
-        .ai-glow { box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
-        .loading-dots:after { content: ' .'; animation: dots 1s steps(5, end) infinite; }
-        @keyframes dots { 0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); } 40% { color: inherit; text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); } 60% { text-shadow: .25em 0 0 inherit, .5em 0 0 rgba(0,0,0,0); } 80%, 100% { text-shadow: .25em 0 0 inherit, .5em 0 0 inherit; } }
-    </style>
-    <script>
-        tailwind.config = { theme: { extend: { colors: { brand: { blue: '#1E3A8A', cyan: '#06B6D4', emerald: '#10B981', rose: '#E11D48', amber: '#F59E0B' } } } } }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بروتوكول عيادة الطب النفسي الرقمية (DMC) - سمافريكا</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; }
+.chart-container { position: relative; width: 100%; max-width: 600px; margin: auto; height: 350px; }
+.ai-glow { box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
+.loading-dots:after { content: ' .'; animation: dots 1s steps(5,end) infinite; }
+@keyframes dots { 0%,20%{color: rgba(0,0,0,0); text-shadow:.25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0);} 40%{color:inherit; text-shadow:.25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0);} 60%{text-shadow:.25em 0 0 inherit, .5em 0 0 rgba(0,0,0,0);} 80%,100%{text-shadow:.25em 0 0 inherit, .5em 0 0 inherit;} }
+</style>
+<script>
+tailwind.config = { theme: { extend: { colors: { brand: { blue:'#1E3A8A', cyan:'#06B6D4', emerald:'#10B981', rose:'#E11D48', amber:'#F59E0B' } } } } }
+</script>
 </head>
 <body class="text-slate-800 antialiased">
 
-    <header class="bg-brand-blue text-white py-10 px-6 shadow-lg border-b-8 border-brand-cyan text-center">
-        <div class="max-w-5xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-extrabold mb-2">بروتوكول عيادة الطب النفسي الرقمية</h1>
-            <p class="text-lg text-blue-100">سمافريكا للابتكارات غير الربحية (DMC)</p>
-        </div>
-    </header>
+<header class="bg-brand-blue text-white py-10 px-6 shadow-lg border-b-8 border-brand-cyan text-center">
+<div class="max-w-5xl mx-auto">
+<h1 class="text-3xl md:text-4xl font-extrabold mb-2">بروتوكول عيادة الطب النفسي الرقمية</h1>
+<p class="text-lg text-blue-100">سمافريكا للابتكارات غير الربحية (DMC)</p>
+</div>
+</header>
 
-    <main class="max-w-6xl mx-auto px-4 py-10 space-y-10">
-        
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="#ai-triage" class="bg-brand-cyan text-white px-6 py-3 rounded-xl font-bold shadow-md hover:scale-105 transition-all ai-glow">✨ المساعد الذكي للفرز</a>
-            <a href="#ai-support" class="bg-brand-emerald text-white px-6 py-3 rounded-xl font-bold shadow-md hover:scale-105 transition-all">🛡️ دعم الميسرات الميداني</a>
-        </div>
+<main class="max-w-6xl mx-auto px-4 py-10 space-y-10">
 
-        <section id="ai-triage" class="bg-slate-900 text-white rounded-3xl p-8 shadow-2xl border-r-8 border-brand-cyan">
-            <div class="flex items-center gap-4 mb-6">
-                <div class="text-3xl">🤖</div>
-                <div>
-                    <h2 class="text-xl font-bold">المحلل الذكي للحالات</h2>
-                    <p class="text-cyan-200 text-sm">أدخلي وصف الحالة للحصول على تصنيف فوري بناءً على بروتوكول سمافريكا.</p>
-                </div>
-            </div>
-            
-            <textarea id="triageInput" class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white placeholder-white/30 focus:ring-2 focus:ring-brand-cyan h-32 mb-4" placeholder="مثال: مستفيدة تعاني من حزن مستمر منذ شهرين وفقدان للشهية..."></textarea>
-            
-            <button onclick="runAiTriage()" id="triageBtn" class="w-full md:w-auto bg-brand-cyan hover:bg-cyan-400 text-slate-900 font-bold py-3 px-10 rounded-xl transition-all">تحليل الحالة الآن ✨</button>
-            <div id="triageStatus" class="mt-2 text-sm text-cyan-300"></div>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="#ai-triage" class="bg-brand-cyan text-white px-6 py-3 rounded-xl font-bold shadow-md hover:scale-105 transition-all ai-glow">✨ المساعد الذكي للفرز</a>
+<a href="#ai-support" class="bg-brand-emerald text-white px-6 py-3 rounded-xl font-bold shadow-md hover:scale-105 transition-all">🛡️ دعم الميسرات الميداني</a>
+</div>
 
-            <div id="triageOutput" class="hidden bg-white/5 border border-white/10 rounded-xl p-6 mt-6 animate-fade-in text-cyan-50"></div>
-        </section>
+<section id="ai-triage" class="bg-slate-900 text-white rounded-3xl p-8 shadow-2xl border-r-8 border-brand-cyan">
+<div class="flex items-center gap-4 mb-6">
+<div class="text-3xl">🤖</div>
+<div>
+<h2 class="text-xl font-bold">المحلل الذكي للحالات</h2>
+<p class="text-cyan-200 text-sm">أدخلي وصف الحالة للحصول على تصنيف فوري بناءً على بروتوكول سمافريكا.</p>
+</div>
+</div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white p-6 rounded-2xl shadow border-t-4 border-brand-emerald">
-                <h3 class="text-lg font-bold text-center mb-4">توزيع الحالات المقبولة</h3>
-                <div class="chart-container"><canvas id="acceptedCasesChart"></canvas></div>
-            </div>
-            <div class="bg-white p-6 rounded-2xl shadow border-t-4 border-brand-blue">
-                <h3 class="text-lg font-bold text-center mb-4">أنواع المخرجات الاستشارية</h3>
-                <div class="chart-container"><canvas id="outputsChart"></canvas></div>
-            </div>
-        </div>
+<textarea id="triageInput" class="w-full bg-white/10 border border-white/20 rounded-xl p-4 text-white placeholder-white/30 focus:ring-2 focus:ring-brand-cyan h-32 mb-4" placeholder="مثال: مستفيدة تعاني من حزن مستمر منذ شهرين وفقدان للشهية..."></textarea>
 
-        <section id="ai-support" class="bg-brand-blue text-white rounded-2xl p-8 border-b-8 border-brand-emerald">
-            <h2 class="text-xl font-bold mb-4">🛡️ ركن الدعم النفسي للميسرة</h2>
-            <p class="mb-4 opacity-80 text-sm italic">"عملكِ في الميدان عظيم، وتفريغ مشاعركِ جزء من نجاحكِ."</p>
-            <div class="flex flex-col md:flex-row gap-4">
-                <input id="supportInput" type="text" class="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none" placeholder="كيف كان يومكِ اليوم؟">
-                <button onclick="runAiSupport()" id="supportBtn" class="bg-brand-emerald hover:bg-emerald-400 text-slate-900 font-bold px-8 py-3 rounded-xl transition-all">تحدثي إلينا</button>
-            </div>
-            <div id="supportOutput" class="hidden mt-6 p-4 bg-white/10 border border-white/10 rounded-xl italic text-sm leading-relaxed"></div>
-        </section>
+<button onclick="runAiTriage()" id="triageBtn" class="w-full md:w-auto bg-brand-cyan hover:bg-cyan-400 text-slate-900 font-bold py-3 px-10 rounded-xl transition-all">تحليل الحالة الآن ✨</button>
+<div id="triageStatus" class="mt-2 text-sm text-cyan-300"></div>
+<div id="triageOutput" class="hidden bg-white/5 border border-white/10 rounded-xl p-6 mt-6 animate-fade-in text-cyan-50"></div>
+</section>
 
-    </main>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white p-6 rounded-2xl shadow border-t-4 border-brand-emerald">
+<h3 class="text-lg font-bold text-center mb-4">توزيع الحالات المقبولة</h3>
+<div class="chart-container"><canvas id="acceptedCasesChart"></canvas></div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow border-t-4 border-brand-blue">
+<h3 class="text-lg font-bold text-center mb-4">أنواع المخرجات الاستشارية</h3>
+<div class="chart-container"><canvas id="outputsChart"></canvas></div>
+</div>
+</div>
 
-    <footer class="bg-slate-900 text-slate-500 py-6 text-center text-xs">
-        تم التطوير لصالح مؤسسة سمافريكا للابتكارات غير الربحية © 2026
-    </footer>
+<section id="ai-support" class="bg-brand-blue text-white rounded-2xl p-8 border-b-8 border-brand-emerald">
+<h2 class="text-xl font-bold mb-4">🛡️ ركن الدعم النفسي للميسرة</h2>
+<p class="mb-4 opacity-80 text-sm italic">"عملكِ في الميدان عظيم، وتفريغ مشاعركِ جزء من نجاحكِ."</p>
+<div class="flex flex-col md:flex-row gap-4">
+<input id="supportInput" type="text" class="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none" placeholder="كيف كان يومكِ اليوم؟">
+<button onclick="runAiSupport()" id="supportBtn" class="bg-brand-emerald hover:bg-emerald-400 text-slate-900 font-bold px-8 py-3 rounded-xl transition-all">تحدثي إلينا</button>
+</div>
+<div id="supportOutput" class="hidden mt-6 p-4 bg-white/10 border border-white/10 rounded-xl italic text-sm leading-relaxed"></div>
+</section>
 
-    <script>
-        // --- 1. ضعي رابط الـ Web App الخاص بك هنا ---
-        const proxyUrl = "https://script.google.com/macros/s/AKfycbzPUHBmi-AZ3WL3F_0ssimTbRkvqWTorgJ1LAZF4buPv34WaaSKR5_jp7niTUTy_Z4GMg/exec"; 
+</main>
 
-        async function callGemini(prompt, systemInstruction) {
-            if (!proxyUrl.includes("https")) {
-                alert("يرجى وضع رابط الـ Web App أولاً!");
-                throw new Error("Missing Proxy URL");
-            }
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] }
-            };
-            const response = await fetch(proxyUrl, { method: 'POST', body: JSON.stringify(payload) });
-            const data = await response.json();
-            return data.candidates[0].content.parts[0].text;
-        }
+<footer class="bg-slate-900 text-slate-500 py-6 text-center text-xs">
+تم التطوير لصالح مؤسسة سمافريكا للابتكارات غير الربحية © 2026
+</footer>
 
-        async function runAiTriage() {
-            const input = document.getElementById('triageInput').value;
-            const btn = document.getElementById('triageBtn');
-            const output = document.getElementById('triageOutput');
-            const status = document.getElementById('triageStatus');
-            if (!input) return;
-            
-            btn.disabled = true; status.innerHTML = '<span class="loading-dots">جاري تحليل البيانات عبر السحابة</span>';
-            const sys = "أنت مساعد خبير في بروتوكول DMC لسمافريكا. صنف الحالة (مقبولة، طوارئ، إحالة وجاهية) مع شرح بسيط جداً.";
-            try {
-                const res = await callGemini(input, sys);
-                output.innerHTML = `<h4 class='font-bold text-brand-cyan mb-2'>النتيجة المقترحة:</h4>${res.replace(/\n/g, '<br>')}`;
-                output.classList.remove('hidden');
-                status.innerText = '';
-            } catch (e) { 
-                output.innerHTML = "حدث خطأ في الاتصال بالوسيط. تأكدي من نشر السكربت كـ 'Anyone'.";
-                output.classList.remove('hidden');
-                status.innerText = '';
-            } finally { btn.disabled = false; }
-        }
+<script>
+// --- رابط Web App جاهز ---
+const proxyUrl = "https://script.google.com/macros/s/AKfycbzPUHBmi-AZ3WL3F_0ssimTbRkvqWTorgJ1LAZF4buPv34WaaSKR5_jp7niTUTy_Z4GMg/exec";
 
-        async function runAiSupport() {
-            const input = document.getElementById('supportInput').value;
-            const output = document.getElementById('supportOutput');
-            if (!input) return;
-            output.classList.remove('hidden'); output.innerText = 'جاري إرسال الدعم...';
-            const sys = "أنت زميل داعم للميسرات في الميدان. قدم كلمات تعاطف قصيرة وتمرين تنفس بسيط.";
-            try {
-                const res = await callGemini(input, sys);
-                output.innerHTML = res.replace(/\n/g, '<br>');
-            } catch (e) { output.innerText = "أنتِ بطلة، استمري في عملك الرائع."; }
-        }
+async function callGemini(prompt, systemInstruction) {
+const payload = {
+contents:[{parts:[{text:prompt}]}],
+systemInstruction:{parts:[{text:systemInstruction}]}
+};
+const response = await fetch(proxyUrl,{method:'POST',body:JSON.stringify(payload),headers:{'Content-Type':'application/json'}});
+if(!response.ok) throw new Error("خطأ في الاتصال بالسكربت");
+const data = await response.json();
+return data.candidates?.[0]?.content?.parts?.[0]?.text || "لا يوجد رد";
+}
 
-        window.onload = function() {
-            new Chart(document.getElementById('acceptedCasesChart'), {
-                type: 'doughnut',
-                data: { labels: ["قلق", "اكتئاب", "صدمة", "متابعة"], datasets: [{ data: [25, 25, 25, 25], backgroundColor: ['#1E3A8A', '#06B6D4', '#10B981', '#F59E0B'] }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', rtl: true, labels: { font: { family: 'Tajawal' } } } } }
-            });
-            new Chart(document.getElementById('outputsChart'), {
-                type: 'polarArea',
-                data: { labels: ["طبي", "توثيقي", "تنظيمي"], datasets: [{ data: [80, 90, 70], backgroundColor: ['rgba(16, 185, 129, 0.6)', 'rgba(30, 58, 138, 0.6)', 'rgba(6, 182, 212, 0.6)'] }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', rtl: true, labels: { font: { family: 'Tajawal' } } } } }
-            });
-        }
-    </script>
+async function runAiTriage(){
+const input = document.getElementById('triageInput').value;
+const btn = document.getElementById('triageBtn');
+const output = document.getElementById('triageOutput');
+const status = document.getElementById('triageStatus');
+if(!input) return alert("اكتبي نص أولاً!");
+btn.disabled = true;
+status.innerHTML='<span class="loading-dots">جاري تحليل البيانات عبر السحابة</span>';
+const sys="أنت مساعد خبير في بروتوكول DMC لسمافريكا. صنف الحالة (مقبولة، طوارئ، إحالة وجاهية) مع شرح بسيط جداً.";
+try{
+const res = await callGemini(input,sys);
+output.innerHTML=`<h4 class='font-bold text-cyan-200 mb-2'>النتيجة المقترحة:</h4>${res.replace(/\n/g,'<br>')}`;
+output.classList.remove('hidden');
+status.innerText='';
+}catch(e){
+output.innerHTML="حدث خطأ في الاتصال بالسكربت. تأكدي من نشر السكربت كـ 'Anyone'.";
+output.classList.remove('hidden');
+status.innerText='';
+console.error(e);
+}finally{btn.disabled=false;}
+}
+
+async function runAiSupport(){
+const input=document.getElementById('supportInput').value;
+const output=document.getElementById('supportOutput');
+if(!input) return;
+output.classList.remove('hidden'); output.innerText='جاري إرسال الدعم...';
+const sys="أنت زميل داعم للميسرات في الميدان. قدم كلمات تعاطف قصيرة وتمرين تنفس بسيط.";
+try{
+const res = await callGemini(input,sys);
+output.innerHTML=res.replace(/\n/g,'<br>');
+}catch(e){output.innerText="أنتِ بطلة، استمري في عملك الرائع.";}
+}
+
+window.onload=function(){
+new Chart(document.getElementById('acceptedCasesChart'),{
+type:'doughnut',
+data:{labels:["قلق","اكتئاب","صدمة","متابعة"],datasets:[{data:[25,25,25,25],backgroundColor:['#1E3A8A','#06B6D4','#10B981','#F59E0B']}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',rtl:true,labels:{font:{family:'Tajawal'}}}}}
+});
+new Chart(document.getElementById('outputsChart'),{
+type:'polarArea',
+data:{labels:["طبي","توثيقي","تنظيمي"],datasets:[{data:[80,90,70],backgroundColor:['rgba(16,185,129,0.6)','rgba(30,58,138,0.6)','rgba(6,182,212,0.6)']}]},
+options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',rtl:true,labels:{font:{family:'Tajawal'}}}}}
+});
+}
+</script>
+
 </body>
-                    </html>
-    
+                                 </html>
